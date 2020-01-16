@@ -1,0 +1,20 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        app:key="checkin_address"
+        app:title="Check-in Address" />
+
+    <SwitchPreferenceCompat
+        app:key="enable_label_caching"
+        app:title="Enable Label Caching" />
+
+    <EditTextPreference
+        app:dependency="enable_label_caching"
+        app:key="cache_duration"
+        app:title="Cache Duration" />
+
+    <EditTextPreference
+        app:key="printer_override"
+        app:title="Printer Override" />
+
+</PreferenceScreen>
