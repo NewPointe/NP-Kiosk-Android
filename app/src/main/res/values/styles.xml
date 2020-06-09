@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Base fullscreen application theme. -->
+    <style name="AppTheme.Fullscreen" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
 </resources>

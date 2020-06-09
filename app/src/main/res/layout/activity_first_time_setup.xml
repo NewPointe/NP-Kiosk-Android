@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".FirstTimeSetupActivity">
 
     <EditText
         android:id="@+id/checkinAddressText"
@@ -14,9 +14,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/printer_address_text_hint"
+        android:hint="@string/checkin_address_text_hint"
+        android:importantForAutofill="no"
         android:inputType="textUri"
-        android:text="10.1.24.152"
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

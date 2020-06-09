@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">NP Check-in for Rock RMS</string>
-    <string name="printer_address_text_hint">Enter an ip address</string>
-    <string name="printer_message_text_hint">Enter a message</string>
-    <string name="button_send">Send</string>
+    <string name="app_name">NP Kiosk</string>
+    <string name="checkin_address_text_hint">Enter the URL of your checkin server</string>
+    <string name="button_send">Save</string>
 </resources>
