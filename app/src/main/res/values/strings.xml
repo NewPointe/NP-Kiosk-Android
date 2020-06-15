@@ -1,5 +1,82 @@
 <resources>
     <string name="app_name">NP Kiosk</string>
-    <string name="checkin_address_text_hint">Enter the URL of your checkin server</string>
-    <string name="button_send">Save</string>
+    <string name="button_save_kiosk_address_text">Save</string>
+    <string name="button_scan_code_text">Scan Code</string>
+
+    <string name="preference_category_general" translatable="false">general</string>
+    <string name="preference_category_general_title">General</string>
+
+    <string name="preference_category_printing" translatable="false">printing</string>
+    <string name="preference_category_printing_title">Printing</string>
+
+    <string name="preference_category_other">other</string>
+    <string name="preference_category_other_title">Other</string>
+
+    <string name="preference_category_contact">contact</string>
+    <string name="preference_category_contact_title">Contact</string>
+
+    <string name="preference_kiosk_address" translatable="false">kiosk_address</string>
+    <string name="preference_kiosk_address_alt" translatable="false">checkin_address</string>
+    <string name="preference_kiosk_address_title">Kiosk Address</string>
+    <string name="preference_kiosk_address_description">The kiosk homepage. Must start with https://</string>
+    <string name="preference_kiosk_address_hint">https://example.com</string>
+
+    <string name="error_preference_kiosk_address_blank">Address is required</string>
+    <string name="error_preference_kiosk_address_http">Address must use HTTPS</string>
+    <string name="error_preference_kiosk_address_invalid">Invalid address</string>
+
+    <string name="preference_enable_caching" translatable="false">enable_caching</string>
+    <string name="preference_enable_caching_title">Enable Label Caching</string>
+    <string name="preference_enable_caching_description">Enables label caching.</string>
+
+    <string name="preference_cache_duration" translatable="false">cache_duration</string>
+    <string name="preference_cache_duration_title">Cache Duration</string>
+    <string name="preference_cache_duration_description">The number of seconds to cache labels.</string>
+
+    <string name="error_preference_cache_duration_whole">Duration must be a positive whole number</string>
+
+    <string name="preference_printer_override" translatable="false">printer_override</string>
+    <string name="preference_printer_override_title">Printer Override</string>
+    <string name="preference_printer_override_description">Overrides the printer to use. Can be any valid domain or IP address.</string>
+    <string name="preference_printer_override_hint">0.0.0.0:9100</string>
+
+    <string name="preference_printer_timeout" translatable="false">printer_timeout</string>
+    <string name="preference_printer_timeout_title">Printer Timeout</string>
+    <string name="preference_printer_timeout_description">The number of seconds to wait for a label to print before failing. (Set to 0 to disable)</string>
+
+    <string name="error_preference_printer_timeout_whole">Timeout must be a positive whole number</string>
+
+    <string name="preference_bluetooth_printing" translatable="false">bluetooth_printing</string>
+    <string name="preference_bluetooth_printing_title">Enable Bluetooth Printing</string>
+    <string name="preference_bluetooth_printing_description">Enables bluetooth printing.</string>
+
+    <string name="preference_in_app_settings" translatable="false">in_app_settings</string>
+    <string name="preference_in_app_settings_title">Enable In-App Settings</string>
+    <string name="preference_in_app_settings_description">Enables in-app settings.</string>
+
+    <string name="preference_in_app_settings_delay" translatable="false">in_app_settings_delay</string>
+    <string name="preference_in_app_settings_delay_title">In-App Settings Delay</string>
+    <string name="preference_in_app_settings_delay_description">The number of seconds to wait before showing the in-app settings.</string>
+
+    <string name="error_preference_in_app_settings_delay_whole">Delay must be a positive whole number</string>
+
+    <string name="preference_ui_background_color" translatable="false">ui_background_color</string>
+    <string name="preference_ui_background_color_title">UI Background Color</string>
+    <string name="preference_ui_background_color_description">The hexadecimal color code to use for the UI background.</string>
+
+    <string name="error_preference_ui_background_color_invalid">Background Color must be a valid hexadecimal color code</string>
+
+    <string name="preference_ui_foreground_color" translatable="false">ui_foreground_color</string>
+    <string name="preference_ui_foreground_color_title">UI Foreground Color</string>
+    <string name="preference_ui_foreground_color_description">The hexadecimal color code to use for the UI foreground.</string>
+
+    <string name="error_preference_ui_foreground_color_invalid">Background Color must be a valid hexadecimal color code</string>
+
+    <string name="preference_camera_position" translatable="false">camera_position</string>
+    <string name="preference_camera_position_title">Camera Position</string>
+    <string name="preference_camera_position_description">The camera to use when scanning codes.</string>
+
+    <string name="preference_camera_exposure" translatable="false">camera_exposure</string>
+    <string name="preference_camera_exposure_title">Camera Exposure</string>
+    <string name="preference_camera_exposure_description">The camera exposure, on a scale of 0 to 100.</string>
 </resources>

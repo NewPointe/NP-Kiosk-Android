@@ -1,20 +1,138 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <EditTextPreference
-        app:key="checkin_address"
-        app:title="Check-in Address" />
+    <PreferenceCategory
+        app:key="@string/preference_category_general"
+        app:title="@string/preference_category_general_title">
 
-    <SwitchPreferenceCompat
-        app:key="enable_label_caching"
-        app:title="Enable Label Caching" />
+        <org.newpointe.kiosk.preferences.NPEditTextPreference
+            app:dialogLayout="@layout/url_edit_text_preference_layout"
+            app:dialogMessage="@string/preference_kiosk_address_description"
+            app:dialogTitle="@string/preference_kiosk_address_title"
+            app:hint="@string/preference_kiosk_address_hint"
+            app:key="@string/preference_kiosk_address"
+            app:title="@string/preference_kiosk_address_title"
+            app:useSimpleSummaryProvider="true" />
 
-    <EditTextPreference
-        app:dependency="enable_label_caching"
-        app:key="cache_duration"
-        app:title="Cache Duration" />
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/preference_in_app_settings"
+            app:title="@string/preference_in_app_settings_title" />
 
-    <EditTextPreference
-        app:key="printer_override"
-        app:title="Printer Override" />
+        <org.newpointe.kiosk.preferences.NPEditTextPreference
+            app:defaultValue="5"
+            app:dependency="@string/preference_in_app_settings"
+            app:dialogLayout="@layout/number_edit_text_preference_layout"
+            app:dialogMessage="@string/preference_in_app_settings_delay_description"
+            app:dialogTitle="@string/preference_in_app_settings_delay_title"
+            app:key="@string/preference_in_app_settings_delay"
+            app:title="@string/preference_in_app_settings_delay_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/preference_category_printing"
+        app:title="@string/preference_category_printing_title">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/preference_enable_caching"
+            app:title="@string/preference_enable_caching_title" />
+
+        <org.newpointe.kiosk.preferences.NPEditTextPreference
+            app:defaultValue="600"
+            app:dependency="@string/preference_enable_caching"
+            app:dialogLayout="@layout/number_edit_text_preference_layout"
+            app:dialogMessage="@string/preference_cache_duration_description"
+            app:dialogTitle="@string/preference_cache_duration_title"
+            app:key="@string/preference_cache_duration"
+            app:title="@string/preference_cache_duration_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <org.newpointe.kiosk.preferences.NPEditTextPreference
+            app:dialogLayout="@layout/text_edit_text_preference_layout"
+            app:dialogMessage="@string/preference_printer_override_description"
+            app:dialogTitle="@string/preference_printer_override_title"
+            app:hint="@string/preference_printer_override_hint"
+            app:key="@string/preference_printer_override"
+            app:title="@string/preference_printer_override_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <org.newpointe.kiosk.preferences.NPEditTextPreference
+            app:defaultValue="2"
+            app:dialogLayout="@layout/number_edit_text_preference_layout"
+            app:dialogMessage="@string/preference_printer_timeout_description"
+            app:dialogTitle="@string/preference_printer_timeout_title"
+            app:key="@string/preference_printer_timeout"
+            app:title="@string/preference_printer_timeout_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/preference_bluetooth_printing"
+            app:title="@string/preference_bluetooth_printing_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/preference_category_other"
+        app:title="@string/preference_category_other_title">
+
+        <org.newpointe.kiosk.preferences.NPEditTextPreference
+            app:defaultValue="#eee"
+            app:dialogLayout="@layout/text_edit_text_preference_layout"
+            app:dialogMessage="@string/preference_ui_background_color_description"
+            app:dialogTitle="@string/preference_ui_background_color_title"
+            app:key="@string/preference_ui_background_color"
+            app:title="@string/preference_ui_background_color_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <org.newpointe.kiosk.preferences.NPEditTextPreference
+            app:defaultValue="#000"
+            app:dialogLayout="@layout/text_edit_text_preference_layout"
+            app:dialogMessage="@string/preference_ui_foreground_color_description"
+            app:dialogTitle="@string/preference_ui_foreground_color_title"
+            app:key="@string/preference_ui_foreground_color"
+            app:title="@string/preference_ui_foreground_color_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="front"
+            app:dialogMessage="@string/preference_camera_position_description"
+            app:dialogTitle="@string/preference_camera_position_title"
+            app:entries="@array/preference_camera_position_names"
+            app:entryValues="@array/preference_camera_position_values"
+            app:key="@string/preference_camera_position"
+            app:title="@string/preference_camera_position_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <SeekBarPreference
+            android:max="100"
+            app:defaultValue="50"
+            app:key="@string/preference_camera_exposure"
+            app:min="0"
+            app:seekBarIncrement="1"
+            app:showSeekBarValue="true"
+            app:title="@string/preference_camera_exposure_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/preference_category_contact"
+        app:title="@string/preference_category_contact_title">
+
+        <Preference
+            app:key="github"
+            app:title="Report a bug or issue">
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/NewPointe/NP-Kiosk-Android/issues" />
+
+        </Preference>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

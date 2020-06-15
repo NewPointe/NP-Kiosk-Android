@@ -11,8 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.content.APP_RESTRICTIONS"
+            android:resource="@xml/app_restrictions" />
+
         <activity
-            android:name=".CheckInActivity"
+            android:name="org.newpointe.kiosk.activities.KioskActivity"
             android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,14 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="org.newpointe.kiosk.activities.FirstTimeSetupActivity" />
         <activity
-            android:name=".FirstTimeSetupActivity"
-            android:parentActivityName=".CheckInActivity">
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".CheckInActivity">
-        </activity>
+            android:name="org.newpointe.kiosk.activities.SettingsActivity"
+            android:parentActivityName="org.newpointe.kiosk.activities.KioskActivity" />
     </application>
 
 </manifest>

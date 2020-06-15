@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstTimeSetupActivity">
+    tools:context="org.newpointe.kiosk.activities.FirstTimeSetupActivity">
 
     <EditText
         android:id="@+id/checkinAddressText"
@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/checkin_address_text_hint"
+        android:hint="@string/preference_kiosk_address_hint"
         android:importantForAutofill="no"
         android:inputType="textUri"
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
@@ -31,7 +31,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:onClick="onSubmitButtonClicked"
-        android:text="@string/button_send"
+        android:text="@string/button_save_kiosk_address_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkinAddressText" />

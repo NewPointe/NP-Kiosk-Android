@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<restrictions xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ValidRestrictions">
+
+    <!--
+        Enterprise-manageable Preferences
+        If you change a preference here, make sure to update it in:
+        - preferences.xml
+        - PreferencesFragment
+        - AppPreferenceService
+        - AppPreferenceKey
+     -->
+
+    <restriction
+        android:description="@string/preference_kiosk_address_description"
+        android:key="@string/preference_kiosk_address"
+        android:restrictionType="string"
+        android:title="@string/preference_kiosk_address_title" />
+
+    <restriction
+        android:description="@string/preference_enable_caching_description"
+        android:key="@string/preference_enable_caching"
+        android:restrictionType="bool"
+        android:title="@string/preference_enable_caching_title" />
+
+    <restriction
+        android:description="@string/preference_cache_duration_description"
+        android:key="@string/preference_cache_duration"
+        android:restrictionType="integer"
+        android:title="@string/preference_cache_duration_title" />
+
+    <restriction
+        android:description="@string/preference_printer_override_description"
+        android:key="@string/preference_printer_override"
+        android:restrictionType="string"
+        android:title="@string/preference_printer_override_title" />
+
+    <restriction
+        android:description="@string/preference_printer_timeout_description"
+        android:key="@string/preference_printer_timeout"
+        android:restrictionType="integer"
+        android:title="@string/preference_printer_timeout_title" />
+
+    <restriction
+        android:description="@string/preference_bluetooth_printing_description"
+        android:key="@string/preference_bluetooth_printing"
+        android:restrictionType="bool"
+        android:title="@string/preference_bluetooth_printing_title" />
+
+    <restriction
+        android:description="@string/preference_in_app_settings_description"
+        android:key="@string/preference_in_app_settings"
+        android:restrictionType="bool"
+        android:title="@string/preference_in_app_settings_title" />
+
+    <restriction
+        android:description="@string/preference_in_app_settings_delay_description"
+        android:key="@string/preference_in_app_settings_delay"
+        android:restrictionType="integer"
+        android:title="@string/preference_in_app_settings_delay_title" />
+
+    <restriction
+        android:description="@string/preference_ui_background_color_description"
+        android:key="@string/preference_ui_background_color"
+        android:restrictionType="string"
+        android:title="@string/preference_ui_background_color_title" />
+
+    <restriction
+        android:description="@string/preference_ui_foreground_color_description"
+        android:key="@string/preference_ui_foreground_color"
+        android:restrictionType="string"
+        android:title="@string/preference_ui_foreground_color_title" />
+
+    <restriction
+        android:description="@string/preference_camera_position_description"
+        android:entries="@array/preference_camera_position_names"
+        android:entryValues="@array/preference_camera_position_values"
+        android:key="@string/preference_camera_position"
+        android:restrictionType="choice"
+        android:title="@string/preference_camera_position_title" />
+
+    <restriction
+        android:description="@string/preference_camera_exposure_description"
+        android:key="@string/preference_camera_exposure"
+        android:restrictionType="integer"
+        android:title="@string/preference_camera_exposure_title" />
+
+</restrictions>

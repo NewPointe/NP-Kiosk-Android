@@ -1,5 +1,7 @@
 package org.newpointe.kiosk
 
+import org.newpointe.kiosk.models.Label
+import org.newpointe.kiosk.readToEnd
 import java.net.Socket
 import java.net.URL
 

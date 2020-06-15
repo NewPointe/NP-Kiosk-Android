@@ -1,33 +1,32 @@
-package org.newpointe.kiosk
+package org.newpointe.kiosk.activities
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import info.laht.yajrpc.RpcHandler
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
-import java.nio.charset.StandardCharsets
 
-fun InputStream.readToEnd(): String {
-    val outputStream = ByteArrayOutputStream()
-    val buffer = ByteArray(1024)
-    var length: Int
-    while (this.read(buffer).also { length = it } != -1) {
-        outputStream.write(buffer, 0, length)
-    }
-    return outputStream.toString(StandardCharsets.UTF_8.name())
-}
+import info.laht.yajrpc.RpcHandler
+
+import org.newpointe.kiosk.ClientApiService
+import org.newpointe.kiosk.R
+import org.newpointe.kiosk.RpcWebMessageServer
+import org.newpointe.kiosk.readToEnd
+import org.newpointe.kiosk.services.SettingsService
+
 
 /**
  * The main Check-in activity. It displays the configured check-in website
  * in a full-screen web view and injects an API for label printing.
  */
-class CheckInActivity : AppCompatActivity() {
+class KioskActivity : AppCompatActivity() {
+
+    /**
+     * The settings service
+     */
+    private lateinit var preferences: SettingsService
 
     /**
      * The WebView
@@ -59,9 +58,9 @@ class CheckInActivity : AppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        preferences = SettingsService(this)
         webView = WebView(this).also {
             it.settings.javaScriptEnabled = true
-            it.setOnTouchListener(this::onWebViewTouched)
             it.settings.userAgentString += " iPad"
         }
         setContentView(webView)
@@ -83,13 +82,13 @@ class CheckInActivity : AppCompatActivity() {
     private fun setupCheckin() {
 
         // Get the configured check-in address
-        val address = clientApi.getAppPreference("checkin_address")
+        val address = preferences.getKioskAddress() ?: ""
 
         // Check if the check-in address is set
         if (address.isNullOrEmpty()) {
             this.startActivity(Intent(this, FirstTimeSetupActivity::class.java))
-        }
-        else {
+            finish()
+        } else {
 
             // Parse the address
             val addressUri = Uri.parse(address)
@@ -102,7 +101,7 @@ class CheckInActivity : AppCompatActivity() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
                     webView.evaluateJavascript(clientJs) {
-                        rpcServer.start()
+                        rpcServer.start(0)
                     }
                 }
             }
@@ -115,13 +114,13 @@ class CheckInActivity : AppCompatActivity() {
     /**
      * Run when the WebView is touched
      */
-    @Suppress("UNUSED_PARAMETER")
-    private fun onWebViewTouched(v: View?, event: MotionEvent?): Boolean {
-        if(!settingsShowing && event?.pointerCount == 5) {
+    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+        if (!settingsShowing && event?.pointerCount == 5) {
             settingsShowing = true
             clientApi.showSettings()
+            return true
         }
-        return settingsShowing
+        return super.dispatchTouchEvent(event)
     }
 
 }

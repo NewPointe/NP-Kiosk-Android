@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base attributes available to NPEditTextPreference. -->
+    <declare-styleable name="NPEditTextPreference">
+        <!-- Whether the preference should automatically set its summary to the value saved for the
+             preference, and update the summary when the value is changed. Defaults to false. -->
+        <attr name="hint" format="string"/>
+        <!-- The default value for the preference, which will be set either if persistence
+             is off or persistence is on and the preference is not found in the persistent
+             storage.  -->
+        <attr name="defaultValue" format="string|boolean|integer|reference|float" />
+    </declare-styleable>
+
+</resources>

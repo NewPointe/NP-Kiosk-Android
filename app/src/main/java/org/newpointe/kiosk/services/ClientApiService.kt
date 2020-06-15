@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.preference.PreferenceManager
 import info.laht.yajrpc.RpcService
 import info.laht.yajrpc.RpcMethod
+import org.newpointe.kiosk.activities.SettingsActivity
+import org.newpointe.kiosk.models.Label
 
 internal class ClientApiService(
     private val context: Context

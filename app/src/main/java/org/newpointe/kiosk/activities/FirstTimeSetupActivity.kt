@@ -1,28 +1,29 @@
-package org.newpointe.kiosk
+package org.newpointe.kiosk.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import androidx.preference.PreferenceManager
+
+import org.newpointe.kiosk.R
+import org.newpointe.kiosk.services.SettingsService
 
 class FirstTimeSetupActivity : AppCompatActivity() {
+
+    private lateinit var preferences: SettingsService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_time_setup)
-
+        preferences = SettingsService(this)
     }
 
     override fun onResume() {
         super.onResume()
 
-        // Get the app's shared preferences
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-
         // Get the configured check-in address
-        val address = sharedPreferences.getString("checkin_address", "")
+        val address = preferences.getKioskAddress() ?: ""
 
         val messageText = findViewById<EditText>(R.id.checkinAddressText)
         messageText.setText(address)
@@ -31,18 +32,13 @@ class FirstTimeSetupActivity : AppCompatActivity() {
 
     fun onSubmitButtonClicked(view: View) {
 
-        // Get the app's shared preferences
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-
         // Set the configured check-in address
         val messageText = findViewById<EditText>(R.id.checkinAddressText)
-        sharedPreferences.edit().apply {
-            putString("checkin_address", messageText.text.toString())
-            apply()
-        }
+        preferences.setKioskAddress(messageText.text.toString())
 
         // Go back to the main checkin activity
-        startActivity(Intent(this, CheckInActivity::class.java).apply { flags = Intent.FLAG_ACTIVITY_SINGLE_TOP })
+        startActivity(Intent(this, KioskActivity::class.java))
+        finish()
 
     }
 

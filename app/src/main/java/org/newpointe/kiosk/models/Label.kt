@@ -1,4 +1,4 @@
-package org.newpointe.kiosk
+package org.newpointe.kiosk.models
 
 import java.net.URL
 
