@@ -10,37 +10,60 @@ class SettingsService(private val context: Context) {
 
     private val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
-    private fun getString(resId: Int): String? {
-        return sharedPreferences.getString(context.getString(resId), null)
+    fun getString(resId: Int): String? {
+        return getString(context.getString(resId))
     }
 
-    private fun getBoolean(resourceId: Int, defaultValue: Boolean): Boolean {
-        return sharedPreferences.getBoolean(context.getString(resourceId), defaultValue)
+    fun getString(key: String): String? {
+        return sharedPreferences.getString(key, null)
     }
 
-    private fun getInt(resourceId: Int, defaultValue: Int): Int{
-        return sharedPreferences.getInt(context.getString(resourceId), defaultValue)
+    fun setString(resId: Int, value: String?) {
+        setString(context.getString(resId), value)
     }
 
-    private fun setString(resId: Int, value: String?) {
+    fun setString(key: String, value: String?) {
         sharedPreferences.edit().apply {
-            putString(context.getString(resId), value)
+            if(value == null) remove(key)
+            else putString(key, value)
             apply()
         }
     }
 
-    private fun setBoolean(resId: Int, value: Boolean?) {
+    fun getBoolean(resourceId: Int, defaultValue: Boolean): Boolean {
+        return getBoolean(context.getString(resourceId), defaultValue)
+    }
+
+    fun getBoolean(key: String, defaultValue: Boolean): Boolean {
+        return sharedPreferences.getBoolean(key, defaultValue)
+    }
+
+    fun setBoolean(resId: Int, value: Boolean?) {
+        setBoolean(context.getString(resId), value)
+    }
+
+    fun setBoolean(key: String, value: Boolean?) {
         sharedPreferences.edit().apply {
-            val key = context.getString(resId)
             if(value == null) remove(key)
             else putBoolean(key, value)
             apply()
         }
     }
 
-    private fun setInt(resId: Int, value: Int?) {
+    fun getInt(resourceId: Int, defaultValue: Int): Int{
+        return getInt(context.getString(resourceId), defaultValue)
+    }
+
+    fun getInt(key: String, defaultValue: Int): Int{
+        return sharedPreferences.getInt(key, defaultValue)
+    }
+
+    fun setInt(resId: Int, value: Int?) {
+        setInt(context.getString(resId), value)
+    }
+
+    fun setInt(key: String, value: Int?) {
         sharedPreferences.edit().apply {
-            val key = context.getString(resId)
             if(value == null) remove(key)
             else putInt(key, value)
             apply()

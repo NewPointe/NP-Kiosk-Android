@@ -1,11 +1,10 @@
 package org.newpointe.kiosk
 
-import org.newpointe.kiosk.models.Label
-import org.newpointe.kiosk.readToEnd
+import org.newpointe.kiosk.models.CheckinLabel
 import java.net.Socket
 import java.net.URL
 
-class TcpPrintJob(private val labels: Array<Label>) : Thread() {
+class TcpPrintJob(private val labels: Array<CheckinLabel>) : Thread() {
     override fun run() {
         for (label in labels) {
             val (address, port) = parseAddress(label.PrinterAddress)

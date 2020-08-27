@@ -10,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 
 import info.laht.yajrpc.RpcHandler
 
-import org.newpointe.kiosk.ClientApiService
 import org.newpointe.kiosk.R
 import org.newpointe.kiosk.RpcWebMessageServer
 import org.newpointe.kiosk.readToEnd
+import org.newpointe.kiosk.services.KioskApiService
 import org.newpointe.kiosk.services.SettingsService
 
 
@@ -36,7 +36,7 @@ class KioskActivity : AppCompatActivity() {
     /**
      * The client api
      */
-    private val clientApi = ClientApiService(this)
+    private val clientApi = KioskApiService(this)
 
     /**
      * The rpc handler
@@ -117,7 +117,7 @@ class KioskActivity : AppCompatActivity() {
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
         if (!settingsShowing && event?.pointerCount == 5) {
             settingsShowing = true
-            clientApi.showSettings()
+            clientApi.ShowSettings()
             return true
         }
         return super.dispatchTouchEvent(event)
